@@ -30,7 +30,7 @@
       psswd: '',
       viewAmount : [],
       info : {}
-    }" x-init="info = await (await fetch('/planner/piggybank.json')).text();">
+    }" x-init="info = await (await fetch('piggybank.json')).text();">
         <template x-if="!done">
           <div>
             <h3>Insert Password</h3>

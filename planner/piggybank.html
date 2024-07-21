@@ -25,24 +25,55 @@
     </script>
     <div x-data="{
       done: false,
-      failure: true,
       showAllRecords: false,
       psswd: '',
       viewAmount : [],
-      info : {}
-    }" x-init="info = await (await fetch('piggybank.json')).text();">
+      info : {},
+      hmap : {},
+      draftRecord : {
+        dateTime : {
+          date : (new Date()).getDate(),
+          month: (new Date()).getMonth() + 1,
+          year: (new Date()).getFullYear()
+        },
+        transactionName: '',
+        type : 0,
+        info : {
+          to : 'Bank',
+          from: 'Bank',
+          count : 0
+        }
+      }
+    }" x-init="
+      info = await (await fetch('piggybank.json')).text();">
         <template x-if="!done">
           <div>
             <h3>Insert Password</h3>
             <input type="password" x-model="psswd"/>
-            <button @click="info = decrypt(info, psswd); info = JSON.parse(info).plainText;  done = true;">Submit Password</button>
+            <button @click="
+            info = decrypt(info, psswd); info = JSON.parse(info).plainText;  done = true;
+            if(info.checkerToken == 'UNLOCKED'){
+            for(let i=0; i<info.accounts.length; i++){
+              hmap[info.accounts[i].type] = i;
+            }
+            for(let i=0; i<info.records.length; i++) {
+              for(let j=0; j<info.records[i].audits.length; j++){
+                if(info.records[i].audits[j].type==0){
+                  info.accounts[hmap[info.records[i].audits[j].info.to]].count += info.records[i].audits[j].info.count
+                }else if(info.records[i].audits[j].type==1){
+                  info.accounts[hmap[info.records[i].audits[j].info.from]].count -= info.records[i].audits[j].info.count
+                  info.accounts[hmap[info.records[i].audits[j].info.to]].count += info.records[i].audits[j].info.count
+                }
+              }
+            }
+          }">Submit Password</button>
           </div>
         </template>
         <template x-if="done && (!info.checkerToken || info.checkerToken != 'UNLOCKED')">
-        <div>
+        <div style="font-family:monospace">
           <h1>⚠️立ち入り禁止⚠️</h1>
-          <strong>This is a private section, no tresspassing please :)</strong>
-          <strong>Or guess the password... Goodluck dealing with O(e^n) complexity!</strong>
+          <h3>This is a private section, no trespassing please :)</h3>
+          <h3>Or guess the password... Goodluck dealing with O(e^n) complexity!</h3>
         </div>
         </template>
         <template x-if="done && info.checkerToken == 'UNLOCKED'">
@@ -52,7 +83,7 @@
             <template x-for="(account, i) in info.accounts">
               <div>
                 <h5 x-text="account.type"></h5>
-                <p>Money inside: <span x-text="account.count"></span></p>
+                <p>Money inside: <span x-text="Math.floor(account.count*100)/100"></span>HKD</p>
                 <template x-if="account.due">
                     <p>Due: <span x-text="account.due.date"></span> / <span x-text="account.due.month"></span> / <span x-text="account.due.year"></span></p>
                 </template>
@@ -62,10 +93,20 @@
             <hr/>
             <template x-for="(record, i) in info.records">
               <div>
+                <button @click="info.records.splice(i, 1)" :disabled="record.audits.length!=0">Delete</button> <div x-show="record.audits.length!=0">Please delete all audits first</div>
                 <h5><span x-text="record.dateTime.date"></span> / <span x-text="record.dateTime.month"></span> / <span x-text="record.dateTime.year"></span></h5>
                 <h5>Audits</h5>
                 <template x-for="(audit, j) in record.audits">
                   <div>
+                    <button @click="
+                      if(audit.type==0){
+                        info.accounts[hmap[audit.info.to]].count -= audit.info.count;
+                      }else if(audit.type==1){
+                        info.accounts[hmap[audit.info.from]].count += audit.info.count;
+                        info.accounts[hmap[audit.info.to]].count -= audit.info.count;
+                      }
+                      record.audits.splice(j,1)
+                    ">Delete</button>
                     <template x-if="audit.type==0">
                       <div>
                         <h5 x-text="audit.transactionName"></h5>
@@ -87,10 +128,80 @@
                 </template>
               </div>
             </template>
-            <form>
+            <form @submit.prevent="
+            alreadyCreated = false;
+            idx=0;
+            draftRecord.dateTime.date = parseInt(draftRecord.dateTime.date);
+            draftRecord.dateTime.month = parseInt(draftRecord.dateTime.month);
+            draftRecord.dateTime.year = parseInt(draftRecord.dateTime.year);
+            for(let i=0; i<info.records.length; i++){
+              if(info.records[i].dateTime.date==draftRecord.dateTime.date
+                && info.records[i].dateTime.month==draftRecord.dateTime.month
+                && info.records[i].dateTime.year==draftRecord.dateTime.year){
+                alreadyCreated = true;
+                idx=i;
+              }
+            }
+            if(!alreadyCreated){
+              info.records.unshift({
+                dateTime: draftRecord.dateTime,
+                audits: []
+              })
+              idx=0;
+            }
+            draftRecord.info.count = Number(draftRecord.info.count)
+            info.records[idx].audits.push({type:draftRecord.type, transactionName:draftRecord.transactionName, transactionDesc:draftRecord.transactionDesc, info: {to:draftRecord.info.to, from: draftRecord.type==0?undefined:draftRecord.info.from, count:draftRecord.info.count}});
+            if(draftRecord.type == 0){
+              info.accounts[hmap[draftRecord.info.to]].count += draftRecord.info.count;
+            }else if(draftRecord.type == 1){
+              info.accounts[hmap[draftRecord.info.to]].count += draftRecord.info.count;
+              info.accounts[hmap[draftRecord.info.from]].count -= draftRecord.info.count;
+            }
+            draftRecord.type = 0; draftRecord.transactionName = ''; draftRecord.transactionDesc = ''; draftRecord.info.to=''; draftRecord.info.from=''; draftRecord.info.count=0;
+          ">
               <h3>Add Records:</h3>
+              <label>DD/MM/YY:</label>
+              <input type="number" x-model="draftRecord.dateTime.date"/>
+              <input type="number" x-model="draftRecord.dateTime.month"/>
+              <input type="number" x-model="draftRecord.dateTime.year"/>
+              <select x-model="draftRecord.type"> 
+                  <option value=0>Income/Outcome</option>
+                  <option value=1>Transfer</option>
+              </select><br/>
+              <label>Title:</label><br/>
+              <input x-model="draftRecord.transactionName"/><br/>
+              <label>Description:</label><br/>
+              <textarea x-model="draftRecord.transactionDesc"></textarea><br/>
+              <label>Count:</label>
+              <input step="0.01" type="number" x-model="draftRecord.info.count"/><br/>
+              <template x-if="draftRecord.type == 1">
+                <div>
+                  <label>From:</label>
+                    <select x-model="draftRecord.info.from"/>
+                      <template x-for="(account, j) in info.accounts">
+                        <option x-text="account.type" :value="account.type"></option>
+                      </template>
+                    </select>
+                  <br/>
+                </div>
+              </template>
+              <label>To:</label>
+              <select x-model="draftRecord.info.to"/>
+                <template x-for="(account, j) in info.accounts">
+                  <option x-text="account.type" :value="account.type"></option>
+                </template>
+              </select>
+              <input type="submit" value="Create Audit"/>
             </form>
-            <button @click="console.log(encrypt(info, 'dshkfj'))">Show Encrypted</button>
+            <br/>
+            <button @click=" ()  => {
+            for(let i=0; i<info.accounts.length; i++) {
+              info.accounts[i].count = 0;
+            }
+            navigator.clipboard.writeText(encrypt(info, psswd));
+            alert('You have received the encrypted data in your clipboard, we shall launch you to github');
+            window.location.replace('https://github.com/ChronoAero/private/edit/main/planner/piggybank.json');
+          }">Encrypt, Save, and Logout</button>
           </div>
         </template>
     </div>

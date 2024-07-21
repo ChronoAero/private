@@ -1,3 +1,94 @@
-<html>
-  done!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <link rel="stylesheet" href="./out.css"/>
+    <title>Money Management System</title>
+</head>
+<body>
+    <script>
+    function encrypt(plainText, secret) {
+      
+      return CryptoJS.AES.encrypt(JSON.stringify({ plainText }), secret).toString()
+      
+    }
+    function decrypt(cipherText, secret) {
+      try{
+        return CryptoJS.AES.decrypt(cipherText, secret).toString(CryptoJS.enc.Utf8)
+      }catch{
+        return "{\"plainText\":{}}"
+      }
+    }
+    </script>
+    <div x-data="{
+      done: false,
+      failure: true,
+      showAllRecords: false,
+      psswd: '',
+      viewAmount : [],
+      info : {}
+    }" x-init="info = await (await fetch('/planner/piggybank.json')).text();">
+        <template x-if="!done">
+          <div>
+            <h3>Insert Password</h3>
+            <input type="password" x-model="psswd"/>
+            <button @click="info = decrypt(info, psswd); info = JSON.parse(info).plainText;  done = true;">Submit Password</button>
+          </div>
+        </template>
+        <template x-if="done && (!info.checkerToken || info.checkerToken != 'UNLOCKED')">
+          <div>Password incorrect -- Please try again</div>
+        </template>
+        <template x-if="done && info.checkerToken == 'UNLOCKED'">
+          <div>
+            <h3>Accounts</h3>
+            <hr/>
+            <template x-for="(account, i) in info.accounts">
+              <div>
+                <h5 x-text="account.type"></h5>
+                <p>Money inside: <span x-text="account.count"></span></p>
+                <template x-if="account.due">
+                    <p>Due: <span x-text="account.due.date"></span> / <span x-text="account.due.month"></span> / <span x-text="account.due.year"></span></p>
+                </template>
+              </div>
+            </template>
+            <h3>Records</h3>
+            <hr/>
+            <template x-for="(record, i) in info.records">
+              <div>
+                <h5><span x-text="record.dateTime.date"></span> / <span x-text="record.dateTime.month"></span> / <span x-text="record.dateTime.year"></span></h5>
+                <h5>Audits</h5>
+                <template x-for="(audit, j) in record.audits">
+                  <div>
+                    <template x-if="audit.type==0">
+                      <div>
+                        <h5 x-text="audit.transactionName"></h5>
+                        <p>Changes on: <span x-text="audit.info.to"></span></p>
+                        <p>Effect: <span x-text="audit.info.count"></span></p>
+                        <p x-text="audit.transactionDesc"></p>
+                      </div>
+                    </template>
+                    <template x-if="audit.type==1">
+                      <div>
+                        <h5 x-text="audit.transactionName"></h5>
+                        <p>Transfer from: <span x-text="audit.info.from"></span></p>
+                        <p>Transfer to: <span x-text="audit.info.to"></span></p>
+                        <p>Effect: <span x-text="audit.info.count"></span></p>
+                        <p x-text="audit.transactionDesc"></p>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </template>
+            <form>
+              <h3>Add Records:</h3>
+            </form>
+            <button @click="console.log(encrypt(info, 'dshkfj'))">Show Encrypted</button>
+          </div>
+        </template>
+    </div>
+</body>
 </html>

@@ -39,7 +39,9 @@
           </div>
         </template>
         <template x-if="done && (!info.checkerToken || info.checkerToken != 'UNLOCKED')">
-          <div>Password incorrect -- Please try again</div>
+          <h1>⚠️立ち入り禁止⚠️</h1>
+          <strong>This is a private section, no tresspassing please :)</strong>
+          <strong>Or guess the password... Goodluck dealing with O(e^n) complexity!</strong>
         </template>
         <template x-if="done && info.checkerToken == 'UNLOCKED'">
           <div>

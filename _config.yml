@@ -7,7 +7,7 @@ plugins:
 minima:
   skin: dark
 
-baseurl:'/private'
+baseurl:'/private/'
 
 title: ㅤ
 author:

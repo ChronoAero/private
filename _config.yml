@@ -1,5 +1,10 @@
 markdown: kramdown
 
+theme: minima
+
+minima:
+  skin: dark
+
 title: ㅤ
 author:
   name: ChronoAero

@@ -1,4 +1,5 @@
 markdown: kramdown
+baseurl: '/private/'
 
 remote_theme: jekyll/minima
 plugins:
@@ -7,7 +8,7 @@ plugins:
 minima:
   skin: dark
 
-baseurl:'/private/'
+
 
 title: ㅤ
 author:

@@ -1,14 +1,4 @@
 markdown: kramdown
-baseurl: '/private/'
-
-remote_theme: jekyll/minima
-plugins:
-  - jekyll-remote-theme
-
-minima:
-  skin: dark
-
-
 
 title: ㅤ
 author:

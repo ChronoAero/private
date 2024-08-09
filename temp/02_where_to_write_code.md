@@ -19,4 +19,4 @@ For robotics programming, we will teach you to install [**CubeIDE**](https://www
 3. After you have completed some code, click "Run" to compile and run the program. The program is then run in the **console** on the right, where you can do inputs and it can display outputs. If there are any errors in the code, the program will fail to run and display its error message in the console as well. Follow its prompt or maybe search online to find out how to fix the problem.
 4. Click "Save", you will see your URL change to `https://repl.it/repls/SomeRandomWords`, you can access your code with this URL later.
 
-[Next Page](03_hello_world.html)
+[Continue to The Next Page](03_hello_world.html)

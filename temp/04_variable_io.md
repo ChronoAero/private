@@ -235,4 +235,4 @@ printf("%d, %d, %c", x, y, z);
 
 ## Self Test (For Concept Check)
 
-[Next Page](05_operators.html)
+[Continue to The Next Page](05_operators.html)

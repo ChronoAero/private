@@ -216,4 +216,4 @@ int main(){
 }
 ```
 
-[Next Page](06_rules_and_extra_features.html)
+[Continue to The Next Page](06_rules_and_extra_features.html)

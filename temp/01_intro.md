@@ -1,6 +1,6 @@
 # Basics of C
 
-[Back to Main](README.html)
+[Back to Main](index.html)
 
 <details>
 

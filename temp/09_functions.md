@@ -1,4 +1,4 @@
-[Back to Main](README.html) | [Previous Page](08_array_string.html)
+[Back to Main](index.html) | [Previous Page](08_array_string.html)
 
 # Functions
 

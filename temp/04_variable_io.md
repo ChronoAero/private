@@ -1,4 +1,4 @@
-[Back to Main](README.html) | [Previous Page](03_hello_world.html)
+[Back to Main](index.html) | [Previous Page](03_hello_world.html)
 
 # Variables and Input-Output
 

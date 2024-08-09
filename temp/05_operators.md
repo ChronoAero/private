@@ -1,4 +1,4 @@
-[Back to Main](README.html) | [Previous Page](04_variables_io.html)
+[Back to Main](index.html) | [Previous Page](04_variables_io.html)
 
 ## Operators
 > Everyone knows math, right?

@@ -1,4 +1,4 @@
-[Back to Main](README.html) | [Previous Page](01_intro.html)
+[Back to Main](index.html) | [Previous Page](01_intro.html)
 
 # Where do I write my code?
 

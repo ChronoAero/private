@@ -1,4 +1,4 @@
-[Back to Main](README.html) | [Previous Page](05_operators.html)
+[Back to Main](index.html) | [Previous Page](05_operators.html)
 
 # Some Rules and Extra Features
 

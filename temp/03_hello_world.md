@@ -1,4 +1,4 @@
-[Back to Main](README.html) | [Previous Page](02_where_to_write_code.html)
+[Back to Main](index.html) | [Previous Page](02_where_to_write_code.html)
 
 # Hello World!
 

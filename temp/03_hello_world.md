@@ -1,3 +1,5 @@
+[Back to Main](README.html) | [Previous Page](02_where_to_write_code.html)
+
 # Hello World!
 
 > Everyone's first C Program!
@@ -81,3 +83,5 @@ void Main(){
   </summary>
   "stdio.h" should be &ltstdio.h&gt, Main should be main, printf should be ended with semicolon, mising curly bracket at the end.
 </details>
+
+[Next Page](04_variables_io_speedrun.html)

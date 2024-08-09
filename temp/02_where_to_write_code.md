@@ -1,3 +1,5 @@
+[Back to Main](README.html) | [Previous Page](01_intro.html)
+
 # Where do I write my code?
 
 > How to start coding?
@@ -16,3 +18,5 @@ For robotics programming, we will teach you to install [**CubeIDE**](https://www
 2. In the middle section, you will see a sample code already in place, under the file name `main.c`. You can also see all the files on the left column associated with this setup. Do not worry about other files right now, editing `main.c` in the middle column is sufficient for now.
 3. After you have completed some code, click "Run" to compile and run the program. The program is then run in the **console** on the right, where you can do inputs and it can display outputs. If there are any errors in the code, the program will fail to run and display its error message in the console as well. Follow its prompt or maybe search online to find out how to fix the problem.
 4. Click "Save", you will see your URL change to `https://repl.it/repls/SomeRandomWords`, you can access your code with this URL later.
+
+[Next Page](03_hello_world.html)

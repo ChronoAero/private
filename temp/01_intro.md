@@ -1,5 +1,7 @@
 # Basics of C
 
+[Back to Main](README.html)
+
 <details>
 
 <summary>​​​Authors</summary>
@@ -55,3 +57,5 @@ Enjoy your time debugging!
 We welcome the integration of AI in software development. Indeed, ChatGPT is quite powerful and usually able to generate a working code in some cases. However, when using them in your programming work, you need to be aware that they only act as your **assistant**. You need to always verify whether the code generated works well in all cases. Your understanding of programming logic itself is also important.
 
 When you decide to use ChatGPT to generate code. Make sure you **do** understand why it decides to use these line of codes. You should not blindly trust all the code written by an AI.
+
+[Continue to The Next Page](02_where_to_write_code.html)

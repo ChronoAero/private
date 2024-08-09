@@ -2,7 +2,7 @@
 
 [Back to Main](index.html) | [Previous Page](04_variables_io.html)
 
-## Operators
+# Operators
 > Everyone knows math, right?
 
 After understanding how to make variables, what can we do with them other than storing variables? Operate them!

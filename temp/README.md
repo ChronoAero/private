@@ -36,7 +36,7 @@ Actual Materials
 * [04) Variables and Input-Output](04_variable_io.html) (~30 
 minutes)
   * Variables, assignment using `=`, `printf`, `scanf`
-* [05) Operators](05_operators_html) (~30 minutes)
+* [05) Operators](05_operators.html) (~30 minutes)
   * Arithmetic (`+`, `-`, `*`, etc.), relational (`<`, `==`, etc.), compound assignment (`+=`, `-=`), increment and decrement (`++` and `--`)
 * [06) Rules and Extra Features](06_rules_and_extra_features.html) (~10 minutes, should be quick)
   * Rules on variable naming, booleans, standard integers, casting, and `const` keyword

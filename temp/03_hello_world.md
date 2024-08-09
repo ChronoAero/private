@@ -84,4 +84,4 @@ void Main(){
   "stdio.h" should be &ltstdio.h&gt, Main should be main, printf should be ended with semicolon, mising curly bracket at the end.
 </details>
 
-[Next Page](04_variables_io_speedrun.html)
+[Next Page](04_variable_io.html)

@@ -164,7 +164,7 @@ int map[4][3] = {
 
 `map[4][3]` can be written in the matrix as below:
 
-$\textsf{map} = \begin{bmatrix}  1& 5 & 2 \\ 3 & 4 & 9 \\ 7 & 6 & 4 \\ 5 & 5 & 3\end{bmatrix}$
+$$\textsf{map} = \begin{bmatrix}  1& 5 & 2 \\ 3 & 4 & 9 \\ 7 & 6 & 4 \\ 5 & 5 & 3\end{bmatrix}$$
 
 When accessing the variable, think about like this:
 

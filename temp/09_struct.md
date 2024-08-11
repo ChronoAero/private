@@ -1,3 +1,5 @@
+[Back to Main](index.html) | [Previous Page](08_array_string.html)
+
 # Struct
 
 > At times, the data types provided by C might not be enough...

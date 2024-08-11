@@ -164,7 +164,7 @@ int map[4][3] = {
 
 `map[4][3]` can be written in the matrix as below:
 
-$$\textsf{map} = \begin{bmatrix}  1& 5 & 2 \\\\ 3 & 4 & 9 \\\\ 7 & 6 & 4 \\\\ 5 & 5 & 3\end{bmatrix}$$
+$\textsf{map} = \begin{bmatrix}  1& 5 & 2 \\ 3 & 4 & 9 \\ 7 & 6 & 4 \\ 5 & 5 & 3\end{bmatrix}$
 
 When accessing the variable, think about like this:
 
@@ -292,4 +292,12 @@ cmp = strcmp(str1, str3);
 printf("cmp: %d\n", cmp); //prints -32 (non-zero)
 ```
 
-[Continue to The Next Page](09_functions.html)
+## Self-Test (For Concept Checking)
+
+[I will add count mode and median here]
+
+[Make an exercise for string here too]
+
+[Make a matrix question here (yeah, let's do 2x2 eigenvalues)]
+
+[Continue to The Next Page](09_struct.html)

@@ -237,4 +237,94 @@ printf("%d, %d, %c", x, y, z);
 
 ## Self Test (For Concept Check)
 
+Q1. Find errors in the following program (This may look like an awkward program, less awkward programs are coming)
+```c
+#include <stdio.h>
+
+int main(){
+    x = "4";
+    printf('You are now reading notes #%d... Let's make a fake printer interface', &x);
+    printf("Input the type of paper you would like to print on? (input the number)\n");
+    int a; char b;
+    scanf("%d", a);
+    printf("Input the type of paper you would like to print on? (input the letter)\n");
+    scanf("%c", b);
+    printf("You would like to print on an %c%d paper...");
+}
+```
+The program should be corrected, such that when given the input (yes, it will have newline separating it)
+```
+0
+A
+```
+It will output:
+```
+You are now reading notes #4... Let's make a fake printer interface
+Input the type of paper you would like to print on? (input the number)
+Input the type of paper you would like to print on? (input the letter)
+You would like to print on an A0 paper...
+```
+
+<details>
+One possible solution is the following:
+
+``` c
+#include <stdio.h>
+
+    int main(){
+        char x = '4'; //initialize the variable first, int x is acceptable if you print it with %d
+        printf("You are now reading notes #%c... Let's make a fake printer interface\n", x); //Use double quotes for strings, remove the &, and use %c
+        printf("Input the type of paper you would like to print on? (input the number)\n");
+        int a; char b;
+        scanf("%d", &a); //use the &
+        printf("Input the type of paper you would like to print on? (input the letter)\n");
+        scanf("\n%c", &b); //use the &, because \n is also considered a character, you need to include it in the format; otherwise it will get into b
+        printf("You would like to print on an %c%d paper...");
+    }
+```
+
+<summary>Ans</summary>
+</details>
+
+
+Q2. Starting from scratch, write a program such that, when given the input: 
+```
+Course ID: 21387312
+Course code: PHYS2711
+Rating: 4/5
+```
+It will output:
+```
+PHYS2711 (4/5) [2138-7312]
+```
+And when it is given the input:
+```
+Course ID: 03256721
+Course code: COMP4895
+Rating: 3/5
+```
+It will output:
+```
+COMP4895 (3/5) [0325-6721]
+```
+You can only include the library `stdio.h`. We guarantee that Course ID contains 8 digits (may start with 0). Course code starts with 4 letters followed by 4 digits (will not start with 0). and rating is an integer and always out of 5.
+
+<details>
+One possible solution is the following:
+
+``` c
+#include <stdio.h>
+
+int main(){
+    char a, b, c, d, e, f, g, h, i, j, k ,l; int x, y;
+    scanf("Course ID: %c%c%c%c%c%c%c%c\n", &a, &b, &c, &d, &e, &f, &g, &h);
+    scanf("Course code: %c%c%c%c%d\n", &i, &j, &k, &l, &x);
+    scanf("Rating: %d/5", &y);
+    printf("%c%c%c%c%d (%d/5) [%c%c%c%c-%c%c%c%c]", i, j, k, l, x, y, a, b, c, d, e, f, g, h);
+}
+```
+
+<summary>Ans</summary>
+</details>
+
 [Continue to The Next Page](05_operators.html)

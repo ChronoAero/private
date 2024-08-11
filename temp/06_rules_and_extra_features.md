@@ -124,6 +124,13 @@ float f = 2.5f;
 int n = (int)f; //n is now 2
 ```
 
+Just saying the one thing above **static_casing**, which we use it almost everyday. Static_cast is just directly tell the compiler to change the data-type without caring anything. If it fails, it will just return an error.
+
+```c
+float f = 2.5f;
+int n = static_cast<int>f; //n is now 2
+```
+
 ## `const`
  `const` is a type of qualifier in C. A variable with such a qualifier in front is not allowed to be reassigned.
 

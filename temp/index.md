@@ -22,6 +22,8 @@
 During the revision period of the tutorial notes:
 I actually made a live link to render the markdown, please check it out: [https://chronoaero.github.io/private/temp/README.html](https://chronoaero.github.io/private/temp/README.html)
 
+There are some stashed question in [here](question_drafts.html), please see if any may can be our homework or self tests. 
+
 The not-so-important-so-please-scroll-quickly Part:
 
 * [01) Intro](01_intro.html)
@@ -44,8 +46,7 @@ minutes)
   * `if` statements, `switch` statemtent, `while` statement, `for` statement, scope
 * [08) Array and String](08_array_string.html) (~30 minutes)
   * arrays, string (array of `char`), and the library `string.h`
-* [09) Functions](09_functions.html) (~20 minutes)
-* [10) Recursion](10_recursion.html) (~40 minutes)
-* [11) Multi File Proframming](11_multi_file_programming.html) (~30 minutes, important for your homework)
-
-
+* [09) Struct](09_struct.html) (~15 minutes)
+* [10) Functions](10_functions.html) (~20 minutes)
+* [11) Recursion](11_recursion.html) (~40 minutes, we might not cover too much of it in class, but the concept is quite tricky, it is left for you to self learn in detail)
+* [12) Multi File Programming](12_multi_file_programming.html) (~30 minutes, important for your homework)

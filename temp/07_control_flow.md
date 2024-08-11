@@ -142,6 +142,8 @@ Each case is compared against the expression in the switch parenthesis, if a mat
 
 Basically, switch-statements are just if-statements when all their conditions are `x == case`.
 
+Note that `integer_expression`s must be a constant, not a variable.
+
 For example:
 
 ```c
@@ -189,6 +191,26 @@ If `day=42` then the program will output:
 Invalid day
 ```
 
+### Ternary Operator
+
+The **ternary operator** is also known as the **conditional operator**. It is similar to `if...else...`, but is faster to type and is considered a shortcut for `if`. 
+
+Syntax:
+```
+<boolean_expression> ? <value_true> : <value_false>
+```
+
+If `boolean_expression` is non-zero, then the ternary operator evaluates into `value_true`, otherwise, it evaluates into `value_false`.
+
+For example:
+```c
+printf("%d", 5 != 6 ? 42 : 56); //prints 56 because boolean_expression is zero
+printf("%c", 42 > 41 ? 'A' : 'B'); //prints A because boolean_expression is non-zero
+
+//Note that you can also nest it:
+printf("%c", (42 ? 0 : 1) ? 'A' : 'B'); //prints B
+```
+
 ## Loops: `for` and `while`
 
 > Keep doing it until...
@@ -212,6 +234,7 @@ while(x < 5){
 }
 ```
 
+Let's analyze the trace:
 ```c
 <expression>: x < 5 //0 < 5, true (non-zero)
 <statement>: printf("x: %d\n"); x++; //Prints x: 0, then adds 1 to x, x=1
@@ -275,7 +298,7 @@ do{
 }while(x<5);
 ```
 
-
+Let's analyze the trace:
 ```c
 <statement>: printf("x: %d\n", x); x++; //Prints x: 0, then adds 1 to x, x=1
 <expression>: x < 5 //1 < 5, true (non-zero)
@@ -333,24 +356,24 @@ for(int i = 0; i < x; i++){
     printf("i: %d\n", i);
 }
 ```
-Let's analyze this statement:
+Let's analyze the trace:
 
 ```c
 <init_clause>: int i = 0; //initialize looping variable
 <boolean_expression>: i < x  //0 < 5 = true (non-zero)
-<statment>: printf("i: %d\n", i); //i: 0
+<statement>: printf("i: %d\n", i); //i: 0
 <post-processing>: i++ //i = 1 now
 <boolean_expression>: i < x  //1 < 5 = true (non-zero)
-<statment>: printf("i: %d\n", i); //i: 1
+<statement>: printf("i: %d\n", i); //i: 1
 <post-processing>: i++ //i = 2 now
 <boolean_expression>: i < x  //2 < 5 = true (non-zero)
-<statment>: printf("i: %d\n", i); //i: 2
+<statement>: printf("i: %d\n", i); //i: 2
 <post-processing>: i++ //i = 3 now
 <boolean_expression>: i < x  //3 < 5 = true (non-zero)
-<statment>: printf("i: %d\n", i); //i: 3
+<statement>: printf("i: %d\n", i); //i: 3
 <post-processing>: i++ //i = 4 now
 <boolean_expression>: i < x  //4 < 5 = true (non-zero)
-<statment>: printf("i: %d\n", i); //i: 4
+<statement>: printf("i: %d\n", i); //i: 4
 <post-processing>: i++ //i = 5 now
 <boolean_expression>: i < x  //5 < 5 = false (zero)
 <exit>
@@ -407,17 +430,45 @@ for( ; ; printf("Oh no~") ){ //actually all these three statements are optional
 
   ```c
   for (int i = 0; i < 20; i++) {
-      printf("i = %d;", i);
-      if (i == 15) break; 
+      printf("i = %d\n", i);
+      if (i == 3) break; 
   }
   ```
+  The code exits the loop after it runs the line `break;`
 
   This will output:
   ```
-  i = 0;i = 1;i = 2;i = 3;i = 4;i = 5;i = 6;i = 7;i = 8;i = 9;i = 10;i = 11;i = 12;i = 13;i = 14;i = 15;
+  i = 0
+  i = 1
+  i = 2
+  i = 3
   ```
-  The code exits the loop after it runs the line `break;`
- 
+  The trace:
+
+  <details>
+
+  ```c
+  <init_clause> int i = 0;
+  <boolean_expression> i < 20 // = 0 < 20 = true (non-zero)
+  <statement> printf("i = %d\n", i); //prints i = 0
+  <statement> if (i == 3) break;  // 0 == 3 = false (zero), not breaking out
+  <post_processing> i++ //now i is 1
+  <boolean_expression> i < 20 // = 1 < 20 = true (non-zero)
+  <statement> printf("i = %d\n", i); //prints i = 1
+  <statement> if (i == 3) break;  // 1 == 3 = false (zero), not breaking out
+  <post_processing> i++ //now i is 2
+  <boolean_expression> i < 20 // = 2 < 20 = true (non-zero)
+  <statement> printf("i = %d\n", i); //prints i = 2
+  <statement> if (i == 3) break;  // 2 == 3 = false (zero), not breaking out
+  <post_processing> i++ //now i is 3
+  <boolean_expression> i < 20 // = 3 < 20 = true (non-zero)
+  <statement> printf("i = %d\n", i); //prints i = 3
+  <statement> if (i == 3) break;  // 3 == 3 = true, hence it breaks out of the program and stops 
+  ```
+
+  <summary>Click to Reveal</summary>
+
+  </details>
 
 * `continue;`
 
@@ -426,7 +477,7 @@ for( ; ; printf("Oh no~") ){ //actually all these three statements are optional
   Example:
 
   ```c
-  for (int i = 0; i < 15; i++) {
+  for (int i = 0; i < 5; i++) {
       if (i % 2) continue; // jump to the end and skips printf
                            // i++ will run, then i < 15
       printf("i = %d\n", i);
@@ -434,12 +485,290 @@ for( ; ; printf("Oh no~") ){ //actually all these three statements are optional
   ```
   This will output:
   ```
-  i = 0;i = 2;i = 4;i = 6;i = 8;i = 10;i = 12;i = 14;
+  i = 0
+  i = 2
+  i = 4
   ```
+
+  The trace:
+  <details>
+
+  ```c
+  <init_clause> int i = 0;
+  <boolean_expression> i < 5 // = 0 < 5 = true (non-zero)
+  <statement> if (i % 2) continue; //i%2 = 0%2 = 0 (zero), not running continue;
+  <statement> printf("i = %d\n", i);  // prints i = 0
+  <post_processing> i++ //now i is 1
+  <boolean_expression> i < 5 // = 1 < 5 = true (non-zero)
+  <statement> if (i % 2) continue; //i%2 = 1%2 = 1 (non-zero), running continue;
+  <jumps_to_the_bottom>
+  <post_processing> i++ //now i is 2
+  <boolean_expression> i < 5 // = 2 < 5 = true (non-zero)
+  <statement> if (i % 2) continue; //i%2 = 2%2 = 0 (zero), not running continue;
+  <statement> printf("i = %d\n", i);  // prints i = 2
+  <post_processing> i++ //now i is 3
+  <boolean_expression> i < 5 // = 3 < 5 = true (non-zero)
+  <statement> if (i % 2) continue; //i%2 = 3%2 = 1 (non-zero), running continue;
+  <jumps_to_the_bottom>
+  <post_processing> i++ //now i is 4
+  <boolean_expression> i < 5 // = 4 < 5 = true (non-zero)
+  <statement> if (i % 2) continue; //4%2 = 2%2 = 0 (zero), not running continue;
+  <statement> printf("i = %d\n", i);  // prints i = 4
+  <post_processing> i++ //now i is 5
+  <boolean_expression> i < 5 // = 5 < 5 = false; STOP
+  ```
+
+  <summary>Click to Reveal</summary>
+
+  </details>
 
 ## Self-Test
 
-TODO
+Q1. A Nested for Loop
+
+Determine the output of the following program:
+
+```c
+for(int i=0; i<4; i++){
+    for(int j=0; j<3; j++){
+        printf("%d: %d\n", i, j);
+    }
+}
+
+printf("END\n");
+
+for(int i=0; i<2; i++){
+    for(int j=0; j<3; j++){
+        for(int k=0; k<2; k++){
+            printf("%d: %d: %d\n", i, j, k);
+        }
+    }
+}
+```
+
+<details>
+
+    1: 0
+    1: 1
+    1: 2
+    2: 0
+    2: 1
+    2: 2
+    3: 0
+    3: 1
+    3: 2
+    END
+    0: 0: 0
+    0: 0: 1
+    0: 1: 0
+    0: 1: 1
+    0: 2: 0
+    0: 2: 1
+    1: 0: 0
+    1: 0: 1
+    1: 1: 0
+    1: 1: 1
+    1: 2: 0
+    1: 2: 1  
+<summary>Ans</summary>
+</details>
+
+Q2. What is the output of the following program?
+```c
+#include <stdio.h>
+
+int main(){
+    int i=7;
+    while(i){
+        i--;
+        switch(7-i){
+            case 1:
+            case 3:
+                break;
+            case 2:
+                printf("T");
+                continue;
+            default:
+                printf("W");
+            case 7:
+                printf("1");
+                continue;
+            case 5:
+            case 6:
+                printf("0");
+                continue;
+        }
+        if(i==6){
+            printf("R");
+        }else{
+            printf("S");
+        }
+    }
+}
+```
+<details>
+
+```
+RTSW1001
+```
+
+<summary>Ans</summary>
+</details>
+
+Q3. What is the output of the following program?
+```c
+#include <stdio.h>
+
+int main() {
+  for (int l = 0; l < 8; l++) {
+    switch (l) {
+    default:
+      printf("*");
+    case 3:
+      printf("*");
+      break;
+    case 1:
+    case 6:
+    case 2:
+    }
+  }
+  printf("\n");
+  for (int i = 0; i < 4; i++) {
+    printf(" ");
+    for (int j = 0; j < 3; j++) {
+      printf(j < i ? " " : "*");
+    }
+    printf("*");
+    for (int k = 0; k < 3; k++) {
+      if (k > (2 - i)) break;
+      printf("*");
+    }
+    printf("\n");
+  }
+}
+```
+<details>
+
+```
+*********
+ *******
+  *****
+   ***
+    *
+```
+
+<summary>Ans</summary>
+</details>
+
+Q4. 
+
+Part (a) write a code to simulate that the sum of cubes:
+
+$$\sum_{i=1}^n n^3 = 1^3 + 2^3 + 3^3 +... + n^3 = \left(\frac{n(n+1)}{2}\right)^2$$
+
+First, write a program to list out all the numbers in the interval $[1, n]$ cubed. Then store the sum in a variable, and print it out in the format given below.
+
+For example if the input:
+```
+7
+```
+is given to your program, it should display the following
+```
+1
+8
+27
+64
+125
+216
+343
+sum: 784
+```
+You can check that $\left(\frac{7(8)}{2}\right)^2 = 784$. Try it with other numbers and verify it.
+
+<details>
+
+```c
+#include <stdio.h>
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    int sum = 0;
+    for(int i=1; i<=n; i++){
+        printf("%d\n", i*i*i);
+        sum += i*i*i;
+    }
+    printf("sum: %d", sum);
+}
+```
+
+<summary>Ans</summary>
+</details>
+
+Part (b) Write a code to simulate the sum of the alternating reciprocal of odd numbers. That is:
+
+$$\sum_{i=0}^n \frac{(-1)^{n-1}}{2n+1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... + \frac{1}{2n+1} \approx \frac{\pi}{4} \approx 0.7853$$
+
+Note that $i$ is in the range $[0, n]$
+
+Please let your sum variable be a `double` and when finding the reciprocal recall what you learn in casting. You need to run the simulation until the value of $n$ given as your input.
+
+Verify that your answer is getting closer to $0.7853$ the bigger the input is.
+
+Given the input `10` it should output: `sum: 0.8081`
+
+Given the input `100` it should output: `sum: 0.7879`
+
+Given the input `1000` it should output: `sum: 0.7856`
+
+Given the input `10000` it should output: `sum: 0.7854`
+
+<details>
+
+```c
+#include <stdio.h>
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    double sum = 0;
+    for(int i=0; i<=n; i++){
+        double q = (double)i;
+        sum += ((i%2) ? -1 : 1) / (2*q+1);
+    }
+    printf("sum: %.4f", sum);
+}
+```
+
+Q5. Try to make a program that outputs the following:
+```
+Given n = 1
+*
+
+Given n = 2
+**
+**
+
+Given n=3
+***
+* *
+***
+
+Given n=4
+****
+*  *
+*  *
+****
+Given n=5
+*****
+* * *
+*****
+* * *
+*****
+```
+
+<summary>Ans</summary>
+</details>
 
 ## Scopes (Optional)
 

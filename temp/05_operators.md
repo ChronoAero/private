@@ -115,10 +115,6 @@ Read [Operators in C and C++ on Wikipedia](https://en.wikipedia.org/wiki/Operato
 >
 > `int_a != int_b || !(int_c > int_d)`
 
-### Ternary Operator
-
-The **ternary operator** is also known as the **conditional operator**. It is similar to `if...else...`, but is faster to type and is considered a shortcut for `if`. We will cover more about this after the `if` statement.
-
 ## Self Test (For Concept Checking)
 
 Q1. Determine the output of the following program:
@@ -218,4 +214,3 @@ int main(){
 }
 ```
 
-[Continue to The Next Page](06_rules_and_extra_features.html)

@@ -22,6 +22,8 @@
 During the revision period of the tutorial notes:
 I actually made a live link to render the markdown, please check it out: [https://chronoaero.github.io/private/temp/README.html](https://chronoaero.github.io/private/temp/README.html)
 
+There are some stashed question in [here](question_drafts.html), please see if any may can be our homework or self tests. 
+
 The not-so-important-so-please-scroll-quickly Part:
 
 * [01) Intro](01_intro.html)
@@ -36,7 +38,7 @@ Actual Materials
 * [04) Variables and Input-Output](04_variable_io.html) (~30 
 minutes)
   * Variables, assignment using `=`, `printf`, `scanf`
-* [05) Operators](05_operators.html) (~30 minutes)
+* [05) Operators](05_operators_html) (~30 minutes)
   * Arithmetic (`+`, `-`, `*`, etc.), relational (`<`, `==`, etc.), compound assignment (`+=`, `-=`), increment and decrement (`++` and `--`)
 * [06) Rules and Extra Features](06_rules_and_extra_features.html) (~10 minutes, should be quick)
   * Rules on variable naming, booleans, standard integers, casting, and `const` keyword
@@ -44,8 +46,7 @@ minutes)
   * `if` statements, `switch` statemtent, `while` statement, `for` statement, scope
 * [08) Array and String](08_array_string.html) (~30 minutes)
   * arrays, string (array of `char`), and the library `string.h`
-* [09) Functions](09_functions.html) (~20 minutes)
-* [10) Recursion](10_recursion.html) (~40 minutes)
-* [11) Multi File Proframming](11_multi_file_programming.html) (~30 minutes, important for your homework)
-
-
+* [09) Struct](09_struct.html) (~15 minutes)
+* [10) Functions](10_functions.html) (~20 minutes)
+* [11) Recursion](11_recursion.html) (~40 minutes, we might not cover too much of it in class, but the concept is quite tricky, it is left for you to self learn in detail)
+* [12) Multi File Programming](12_multi_file_programming.html) (~30 minutes, important for your homework)

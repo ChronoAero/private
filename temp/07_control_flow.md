@@ -449,24 +449,23 @@ for( ; ; printf("Oh no~") ){ //actually all these three statements are optional
 
   <details>
 
-  ```c
-  <init_clause> int i = 0;
-  <boolean_expression> i < 20 // = 0 < 20 = true (non-zero)
-  <statement> printf("i = %d\n", i); //prints i = 0
-  <statement> if (i == 3) break;  // 0 == 3 = false (zero), not breaking out
-  <post_processing> i++ //now i is 1
-  <boolean_expression> i < 20 // = 1 < 20 = true (non-zero)
-  <statement> printf("i = %d\n", i); //prints i = 1
-  <statement> if (i == 3) break;  // 1 == 3 = false (zero), not breaking out
-  <post_processing> i++ //now i is 2
-  <boolean_expression> i < 20 // = 2 < 20 = true (non-zero)
-  <statement> printf("i = %d\n", i); //prints i = 2
-  <statement> if (i == 3) break;  // 2 == 3 = false (zero), not breaking out
-  <post_processing> i++ //now i is 3
-  <boolean_expression> i < 20 // = 3 < 20 = true (non-zero)
-  <statement> printf("i = %d\n", i); //prints i = 3
-  <statement> if (i == 3) break;  // 3 == 3 = true, hence it breaks out of the program and stops 
-  ```
+  <pre>
+  [init_clause] int i = 0;
+  [boolean_expression] i < 20 // = 0 < 20 = true (non-zero)
+  [statement] printf("i = %d\n", i); //prints i = 0
+  [statement] if (i == 3) break;  // 0 == 3 = false (zero), not breaking out
+  [post_processing] i++ //now i is 1
+  [boolean_expression] i < 20 [", i); //prints i = 1
+  [statement] if (i == 3) break;  // 1 == 3 = false (zero), not breaking out
+  [post_processing] i++ //now i is 2
+  [boolean_expression] i < 20 // = 2 < 20 = true (non-zero)
+  [statement] printf("i = %d\n", i); //prints i = 2
+  [statement] if (i == 3) break;  // 2 == 3 = false (zero), not breaking out
+  [post_processing] i++ //now i is 3
+  [boolean_expression] i < 20 // = 3 < 20 = true (non-zero)
+  [statement] printf("i = %d\n", i); //prints i = 3
+  [statement] if (i == 3) break;  // 3 == 3 = true, hence it breaks out of the program and stops 
+  </pre>
 
   <summary>Click to Reveal</summary>
 
@@ -495,30 +494,30 @@ for( ; ; printf("Oh no~") ){ //actually all these three statements are optional
   The trace:
   <details>
 
-  ```c
-  <init_clause> int i = 0;
-  <boolean_expression> i < 5 // = 0 < 5 = true (non-zero)
-  <statement> if (i % 2) continue; //i%2 = 0%2 = 0 (zero), not running continue;
-  <statement> printf("i = %d\n", i);  // prints i = 0
-  <post_processing> i++ //now i is 1
-  <boolean_expression> i < 5 // = 1 < 5 = true (non-zero)
-  <statement> if (i % 2) continue; //i%2 = 1%2 = 1 (non-zero), running continue;
-  <jumps_to_the_bottom>
-  <post_processing> i++ //now i is 2
-  <boolean_expression> i < 5 // = 2 < 5 = true (non-zero)
-  <statement> if (i % 2) continue; //i%2 = 2%2 = 0 (zero), not running continue;
-  <statement> printf("i = %d\n", i);  // prints i = 2
-  <post_processing> i++ //now i is 3
-  <boolean_expression> i < 5 // = 3 < 5 = true (non-zero)
-  <statement> if (i % 2) continue; //i%2 = 3%2 = 1 (non-zero), running continue;
-  <jumps_to_the_bottom>
-  <post_processing> i++ //now i is 4
-  <boolean_expression> i < 5 // = 4 < 5 = true (non-zero)
-  <statement> if (i % 2) continue; //4%2 = 2%2 = 0 (zero), not running continue;
-  <statement> printf("i = %d\n", i);  // prints i = 4
-  <post_processing> i++ //now i is 5
-  <boolean_expression> i < 5 // = 5 < 5 = false; STOP
-  ```
+  <pre>
+  [init_clause] int i = 0;
+  [boolean_expression] i < 5 // = 0 < 5 = true (non-zero)
+  [statement] if (i % 2) continue; //i%2 = 0%2 = 0 (zero), not running continue;
+  [statement] printf("i = %d\n", i);  // prints i = 0
+  [post_processing] i++ //now i is 1
+  [boolean_expression] i < 5 // = 1 < 5 = true (non-zero)
+  [statement] if (i % 2) continue; //i%2 = 1%2 = 1 (non-zero), running continue;
+  [jumps_to_the_bottom]
+  [post_processing] i++ //now i is 2
+  [boolean_expression] i < 5 // = 2 < 5 = true (non-zero)
+  [statement] if (i % 2) continue; //i%2 = 2%2 = 0 (zero), not running continue;
+  [statement] printf("i = %d\n", i);  // prints i = 2
+  [post_processing] i++ //now i is 3
+  [boolean_expression] i < 5 // = 3 < 5 = true (non-zero)
+  [statement] if (i % 2) continue; //i%2 = 3%2 = 1 (non-zero), running continue;
+  [jumps_to_the_bottom]
+  [post_processing] i++ //now i is 4
+  [boolean_expression] i < 5 // = 4 < 5 = true (non-zero)
+  [statement] if (i % 2) continue; //4%2 = 2%2 = 0 (zero), not running continue;
+  [statement] printf("i = %d\n", i);  // prints i = 4
+  [post_processing] i++ //now i is 5
+  [boolean_expression] i < 5 // = 5 < 5 = false; STOP
+  </pre>
 
   <summary>Click to Reveal</summary>
 
@@ -742,6 +741,9 @@ int main(){
     printf("sum: %.4f", sum);
 }
 </pre>
+
+<summary>Ans</summary>
+
 </details>
 
 Q5. Print Crate: Try to make a program that outputs the following:

@@ -649,6 +649,7 @@ int main() {
   }
 }
 ```
+
 <details>
 
 <pre>
@@ -689,22 +690,10 @@ You can check that $\left(\frac{7(8)}{2}\right)^2 = 784$. Try it with other numb
 
 <details>
 
-<pre>
-#include <stdio.h>
-
-int main(){
-    int n;
-    scanf("%d", &n);
-    int sum = 0;
-    for(int i=1; i<=n; i++){
-        printf("%d\n", i*i*i);
-        sum += i*i*i;
-    }
-    printf("sum: %d", sum);
-}</pre>
-
+<img src="images/07_codeblock_1.png"/>
 
 <summary>Ans</summary>
+
 </details>
 
 Part (b) Write a code to simulate the sum of the alternating reciprocal of odd numbers. That is:
@@ -727,20 +716,7 @@ Given the input `10000` it should output: `sum: 0.7854`
 
 <details>
 
-<pre>
-#include <stdio.h>
-
-int main(){
-    int n;
-    scanf("%d", &n);
-    double sum = 0;
-    for(int i=0; i<=n; i++){
-        double q = (double)i;
-        sum += ((i%2) ? -1 : 1) / (2*q+1);
-    }
-    printf("sum: %.4f", sum);
-}
-</pre>
+<img src="images/07_codeblock_2.png"/>
 
 <summary>Ans</summary>
 

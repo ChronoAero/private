@@ -702,7 +702,7 @@ int main(){
     }
     printf("sum: %d", sum);
 }</pre>
-```
+
 
 <summary>Ans</summary>
 </details>

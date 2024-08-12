@@ -689,8 +689,8 @@ You can check that $\left(\frac{7(8)}{2}\right)^2 = 784$. Try it with other numb
 
 <details>
 
-```c
-#include <stdio.h>
+<pre>
+#include &ltstdio.h&gt
 
 int main(){
     int n;
@@ -701,7 +701,7 @@ int main(){
         sum += i*i*i;
     }
     printf("sum: %d", sum);
-}
+}</pre>
 ```
 
 <summary>Ans</summary>

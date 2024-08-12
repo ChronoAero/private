@@ -70,14 +70,14 @@ You are suggested to read the following materials before tutorial 1 if you are n
 
 ## Tutorial 1 Links
 
-We will start by emphasizing and reviewing these materials:
+We will start by emphasizing these materials:
 
 * [06) Rules and Extra Features](06_rules_and_extra_features.html) (~10 minutes, should be quick)
   * Rules on variable naming, booleans, standard integers, casting, and `const` keyword
 * [07) Control Flow](07_control_flow.html) (~1 hour)
   * `if` statements, `switch` statemtent, `while` statement, `for` statement, scope
 
-New materials to introduce in Tutorial 1:
+Materials to introduce in Tutorial 1:
 
 * [08) Array and String](08_array_string.html) (~30 minutes)
   * arrays, string (array of `char`), and the library `string.h`
@@ -88,3 +88,10 @@ We will discuss a bit of these materials, however you are expected to explore th
 
 * [11) Recursion](11_recursion.html) (~40 minutes, we might not cover too much of it in class, but the concept is quite tricky, it is left for you to self learn in detail)
 * [12) Multi File Programming](12_multi_file_programming.html) (~30 minutes, important for your homework)
+
+# Advanced C
+
+There are a few more features that we wish you can explore by yourself further...
+
+* [A1) Miscellaneous](a1_miscs.html)
+* [A2) Pointers](a2_pointers.html)

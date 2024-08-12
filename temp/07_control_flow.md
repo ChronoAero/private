@@ -769,6 +769,8 @@ In the following case, you can declare two variables with the same name `i`.
 
 This is because they are in a different scope. In general, a new scope is created when you write code inside the body of `if`, `for`, `while`, and `{}`. The body inside will have a different scope.
 
+If there are more than one variables with the same name in the same scope, then it will cause a compiler error (both of them are at the same level, which one should be used?)
+
 ```c
 #include <stdio>
 

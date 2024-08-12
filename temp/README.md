@@ -88,3 +88,10 @@ We will discuss a bit of these materials, however you are expected to explore th
 
 * [11) Recursion](11_recursion.html) (~40 minutes, we might not cover too much of it in class, but the concept is quite tricky, it is left for you to self learn in detail)
 * [12) Multi File Programming](12_multi_file_programming.html) (~30 minutes, important for your homework)
+
+# Advanced C
+
+There are a few more features that we wish you can explore by yourself further...
+
+* [A1) Miscellaneous](a1_miscs.html)
+* [A2) Pointers](a2_pointers.html)

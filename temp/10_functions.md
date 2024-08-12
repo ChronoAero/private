@@ -509,62 +509,7 @@ DRAW!
 
 <details>
 
-```c
-#include <stdio.h>
-#include <stdlib.h> //include random number generator from here, we will leave this for you to explore.
-
-/*
-There are three outcomes for the function of print_game_result: "DRAW!", "COMPUTER WINS!", or "PLAYER WINS!"
-
-For print_choice, we need to:
-To print out the choice picked by the computer or the user, if the choice is not in the range [0, 3) please return a non-zero number.
-
-For print_game_result, we need to:
-Tell whether the computer wins or the user wins
-
-*/
-
-// 0/1/2 is used to represent ROCK/PAPER/SCISSORS
-const int ROCK = 0, PAPER = 1, SCISSORS = 2;
-// Define the game functions here
-int print_choice(char player, int choice);
-void print_game_result(int computer_choice, int user_choice);
-
-// TODO BEGIN
-
-int print_choice(char player, int choice){
-    if(choice<0 || choice>=3) { return -1; } 
-    printf("%c chooses: %s\n", player, choice==ROCK? "rock" : (choice==PAPER ? "paper" : "scissors") );
-    return 0;
-}
-
-void print_game_result(int computer_choice, int user_choice){
-    if(computer_choice == user_choice){
-        printf("DRAW!"); return;
-    }
-    if( (computer_choice == 0 && user_choice == 2) || (computer_choice==1 && user_choice == 0) || (computer_choice==2 && user_choice == 1)){
-        printf("COMPUTER WINS!"); return;
-    }
-    printf("PLAYER WINS!"); return;
-}
-
-
-//TODO END
-
-int main()
-{
-    int seed; // To seed the random number generator
-    printf("Enter a seed for the game:\n");
-    scanf("%d", &seed);
-    srand(seed); // Initialize random number generator
-    int computer_choice = rand()%3; // rand() produces an integer which is in the range [0, 3)
-    int user_choice = rand()%3; // then converted to ROCK/PAPER/SCISSORS
-    if (print_choice('C', computer_choice) != 0) return -1; // -1 signals an error to the int main()
-    if (print_choice('U', user_choice) != 0) return -1; // -1 signals an error to the int main()
-    print_game_result(computer_choice, user_choice);
-    return 0;
-}
-```
+<img src="images/10_codeblock_1.png"/>
 
 <summary>Ans</summary>
 
@@ -595,38 +540,7 @@ To make things easier for you, try to implement $\textsf{pow}(a,b)$ to power `do
 <details>
 One of such possible answer is the following (note that the solution prints the number in 5 decimal places, just check the first 4)
 
-```c
-#include <stdio.h>
-
-double pow(double a, int b){
-    double prod = 1;
-    for(int i=0; i<b; i++){
-        prod *= a;
-    }
-    return prod;
-}
-
-double factorial(int n){
-    double prod = 1;
-    for(int i=1; i<=n; i++){
-        prod *= i;
-    }
-    return prod;
-}
-
-double exp(double x){
-    int sum = 0;
-    for(int i=0; i<50; i++){
-        sum += pow(x, i)/factorial(x);
-    }
-}
-
-int main(){
-    printf("%.5f\n", exp(1));
-    printf("%.5f\n", exp(2.111));
-    printf("%.5f\n", exp(0.6931472*1.414));
-}
-```
+<img src="images/10_codeblock_2.png"/>
 
 <summary>Ans</summary>
 </details>

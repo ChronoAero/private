@@ -549,7 +549,7 @@ for(int i=0; i<2; i++){
 ```
 
 <details>
-
+<pre>
     1: 0
     1: 1
     1: 2
@@ -572,6 +572,7 @@ for(int i=0; i<2; i++){
     1: 1: 1
     1: 2: 0
     1: 2: 1  
+</pre>
 <summary>Ans</summary>
 </details>
 
@@ -610,9 +611,9 @@ int main(){
 ```
 <details>
 
-```
+<pre>
 RTSW1001
-```
+</pre>
 
 <summary>Ans</summary>
 </details>
@@ -651,13 +652,13 @@ int main() {
 ```
 <details>
 
-```
+<pre>
 *********
  *******
   *****
    ***
     *
-```
+</pre>
 
 <summary>Ans</summary>
 </details>
@@ -690,7 +691,7 @@ You can check that $\left(\frac{7(8)}{2}\right)^2 = 784$. Try it with other numb
 <details>
 
 <pre>
-#include &ltstdio.h&gt
+#include <stdio.h>
 
 int main(){
     int n;
@@ -727,7 +728,7 @@ Given the input `10000` it should output: `sum: 0.7854`
 
 <details>
 
-```c
+<pre>
 #include <stdio.h>
 
 int main(){
@@ -740,7 +741,7 @@ int main(){
     }
     printf("sum: %.4f", sum);
 }
-```
+</pre>
 </details>
 
 Q5. Print Crate: Try to make a program that outputs the following:

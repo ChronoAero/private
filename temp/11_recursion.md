@@ -3,9 +3,11 @@
 [Back to Main](index.html) | [Previous Page](10_functions.html)
 
 
-# Recursion
+# Recursion*
 
 > a function calling itself, calling itself, calling itself, ...
+
+> This topic is slightly less important in our actual work in robot programming. However, do take the time to learn it as we may include a part of it as your homework (to test your ability to understand programming concepts).
 
 Now, let's say that you have a function `int f()`, can you do the following?
 

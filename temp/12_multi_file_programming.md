@@ -7,6 +7,9 @@
 
 > Please don't write more than 1000 lines of code in 1 file
 
+> There are some topics that are less important, they will be marked with `*` in the title. But we may need a slight understanding of it for the next parts.
+
+
 ## File Types
 
 C programs are stored as plain text in, often, 2 file types, with their conventional usages. Do follow the conventions, as there are practical and real differences you will see later on.
@@ -110,7 +113,7 @@ int main(){
 }
 ```
 
-## Separate Compilation
+## Separate Compilation*
 Now that we are able to separate our code to multiple files, to compile it we can do the following:
 
 ```

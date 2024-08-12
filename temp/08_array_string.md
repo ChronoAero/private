@@ -7,6 +7,8 @@
 
 > Array are just many boxes put together in a line.
 
+> There are some topics that are less important, they will be marked with `*` in the title. But we may need a slight understanding of it for the next parts.
+
 ## Arrays
 
 Variables are nice, but what if we need to store a hundred integers?
@@ -244,7 +246,7 @@ printf("My first program in C prints %s :)", hello);
 It will print `My first program in C prints Hello World! :)` (null character is removed upon insertion to the format string)
 
 
-## The `<string.h>` Library
+## The `<string.h>` Library*
 
 There is also a library that can help you in working with strings. You can use `#include <string.h>` to add it to your workspace.
 

@@ -8,6 +8,8 @@
 
 > Note that we assume all codes are within `int main()` in this page
 
+> There are some topics that are less important, they will be marked with `*` in the title. But we may need a slight understanding of it for the next parts.
+
 ## Branching: `if`, `else`, and `switch`
 
 > If this do this, if that do that.
@@ -739,42 +741,119 @@ int main(){
     printf("sum: %.4f", sum);
 }
 ```
+</details>
 
-Q5. Try to make a program that outputs the following:
+Q5. Print Crate: Try to make a program that outputs the following:
 ```
-Given n = 1
-*
+Given n=1
+@
 
-Given n = 2
-**
-**
+Given n=2
+@@
+@@
 
 Given n=3
-***
-* *
-***
+@@@
+@@@
+@@@
 
 Given n=4
-****
-*  *
-*  *
-****
+@@@@
+@@ @
+@ @@
+@@@@
+
 Given n=5
-*****
-* * *
-*****
-* * *
-*****
+@@@@@
+@@  @
+@ @ @
+@  @@
+@@@@@
+
+Given n=6
+@@@@@@
+@@   @
+@ @  @
+@  @ @
+@   @@
+@@@@@@
 ```
 
+<details>
 <summary>Ans</summary>
 </details>
 
-## Scopes (Optional)
-
-TODO
-
+## Scopes*
 Here we will explain about when you can declare a variable with the same name and when you cannot.
+
+In the following case, you can declare two variables with the same name `i`.
+
+This is because they are in a different scope. In general, a new scope is created when you write code inside the body of `if`, `for`, `while`, and `{}`. The body inside will have a different scope.
+
+```c
+#include <stdio>
+
+int i=42; //the global scope
+int j=42;
+int k=42;
+
+int main(){ //the main function scope
+    int i=1; 
+    int j=1;
+    for(int i=0; i<3; i++){ //the for loop scope
+    }
+}
+```
+Hence, you can think of it as:
+```
+global scope: {
+    i = 42;
+    j = 42;
+    k = 42;
+    main function scope : {
+        i = 1;
+        j = 1;
+        for loop scope : {
+            i = 0;
+        }
+    }
+}
+```
+
+When given a name, compile will try to find the variable with that name in the *innermost* scope.
+
+Hence if we have:
+```c
+#include <stdio>
+
+int i=42; //the global scope
+int j=42;
+int k=42;
+
+int main(){ //the main function scope
+    int i=1; 
+    int j=1;
+    for(int i=0; i<3; i++){ //the for loop scope
+        printf("for loop: %d %d %d", i, j, k); 
+        //i is defined in the for loop scope, it will follow the iterator value
+        //j is not defined in the for loop scope, refer to the one in the main function scope (innermost)
+        //k is not defined in both for loop scope nor the main function scope, use the value in the global scope
+    }
+    printf("main(): %d %d", j, k);
+    //j is defined in the main function scope
+    //k is not defined in the main function scope, but defined in the global scope
+}
+```
+
+Hence, the output is:
+```
+for loop: 0 1 42
+for loop: 1 1 42
+for loop: 2 1 42
+main(): 1 42
+```
+
+Note that after the program goes out of a scope, all static variables will be removed (e.g. the `i` in the for loop will be deleted when the program exits the loop). 
 
 
 [Continue to The Next Page](08_array_string.html)

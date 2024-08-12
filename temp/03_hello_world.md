@@ -44,13 +44,12 @@ The program can be dissected as follows:
 
 The `main()` function is a specific case, in that you can only omit the `return` statement. The compiler will automatically add them `return 0;` for you. However, for other functions, you must return something, unless the return type is `void`.
 
-Just in case that your workspace has no working run button. You can use the terminal and copy the following (we will explain it in detail later):
+Just in case that your workspace has no working run button (either VSCode on your machine or you are using Github Codespace). You can use the terminal and copy the following (we will explain it in detail later):
 
 ```
 gcc -o a.exe main.c
 ./a.exe
 ```
-If you are writing the code on your computer, you mau need to install the compiler `gcc`. It might be troublesome to setup, that is why we suggest you to do it on an online IDE. However, if you would like to install it, please refer to [to_do_put_something_here](https://google.com).
 
 ## Common Fails of Printing Hello World in C
 

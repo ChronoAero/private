@@ -6,6 +6,8 @@
 
 > Wrap a block of code with a name so we don't need to write the same thing many times
 
+> There are some topics that are less important, they will be marked with `*` in the title. But we may need a slight understanding of it for the next parts.
+
 Consider the following situation: you would like to work on a system for the movement of a robot, the code to make it move might look something like (This is not an actual working code, you don't need to understand it, just know that it is quite long):
 
 ```c
@@ -297,7 +299,7 @@ void print_array(int data[], int size){
 }
 
 void square(int a){
-    //when you pass a value, say 9, the function will declare a local variable int a = 9; it is a separate instance from the variable you pass
+    //when you pass a value, say 9, the function will declare a local variable int a = 9; it is a separate instance from the variable you pass. The local variable will be destroyed once the program exits the function
     a = a*a;
     printf("%d ", a); //here it prints 81
 }
@@ -316,7 +318,7 @@ int main(){
 
 However, you cannot return an array from a function (unless you would like to deal with pointers)
 
-## How to Modify Non-Array Variables in Functions
+## How to Modify Non-Array Variables in Functions*
 
 In this case, we need to use pointers...
 
@@ -368,7 +370,7 @@ int main(){
 
 The short explanation for why this works is that instead of making a new variable, we give the compiler the address of the variable by adding the `&`. The function will manipulate everything directly there using the `*` operator.
 
-## Function Declaration
+## Function Declaration*
 Now what if we want to provide the definition of the function later on (e.g. after the `int main())
 
 This might seem trivial but this is quite important to understand before you learn about multi file programming.

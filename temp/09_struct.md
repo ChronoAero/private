@@ -4,6 +4,8 @@
 
 > At times, the data types provided by C might not be enough...
 
+> There are some topics that are less important, they will be marked with `*` in the title. But we may need a slight understanding of it for the next parts.
+
 `struct` (for structure) is a user-defined data type for combining data items with different types into one.
 
 Syntax:
@@ -29,31 +31,34 @@ struct <struct_name> <variable_name> = {data1, data2, ...};
 For example, if we would like to make a struct to contain the information of UST members.
 
 ```c
-struct USTMember {
-    char name[20];
-    int ID;
-    int age;
-};
+#include <stdio.h>
 
-//declaration of a variable of type UST Member
-/*
-    here, name = "Mark", ID = 29823163, age = 17
-*/
-struct USTMember student1 = {"Mark", 29823163, 17};
-//structs can be partially initialized, however uninitalized data will contain garbage value
-struct USTMember student2 = {"Sam", 23478912};
-//It is also OK to not initialize anything
-struct USTMember student3; 
+int main(){
+    struct USTMember {
+        char name[20];
+        int ID;
+        int age;
+    };
+
+    //declaration of a variable of type UST Member
+    /*
+        here, name = "Mark", ID = 29823163, age = 17
+    */
+    struct USTMember student1 = {"Mark", 29823163, 17};
+    //structs can be partially initialized, however uninitalized data will contain garbage value
+    struct USTMember student2 = {"Sam", 23478912};
+    //It is also OK to not initialize anything
+    struct USTMember student3; 
 
 
-//If you would like to declare a variable right after declaring the structure of the struct, you may use the following shorthand syntax (put the variable name before the semicolon):
+    //If you would like to declare a variable right after declaring the structure of the struct, you may use the following shorthand syntax (put the variable name before the semicolon):
 
-struct USTProfessor{
-    char name[20];
-    int ID;
-    char department[5];
-} professor1 = {"Tyler", 12362133, "COMP"};
-
+    struct USTProfessor{
+        char name[20];
+        int ID;
+        char department[5];
+    } professor1 = {"Tyler", 12362133, "COMP"};
+}
 ```
 
 You can access members of the structure using the dot operator `.`. For example: `Student.ID` or `Student.age`.
@@ -68,13 +73,7 @@ struct USTMember {
     char name[20];
     int ID;
     int age;
-};
-
-void print_info(struct USTMember student) { 
-    printf("Student Name : %s\n", student.name); //accessing data members
-    printf("Student ID : %d\n", student.ID);
-    printf("Student Age : %d\n", student.age);   
-}
+};    
 
 int main() {
     struct USTMember student1;
@@ -84,6 +83,10 @@ int main() {
     student1.ID = 1010;
     student1.age = 18;
     
+    printf("Student Name : %s\n", student.name); //accessing data members
+    printf("Student ID : %d\n", student.ID);
+    printf("Student Age : %d\n", student.age);   
+
     print_info(student1);
 
     struct USTMember student2;

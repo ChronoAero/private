@@ -4,6 +4,8 @@
 
 # Some Rules and Extra Features
 
+> There are some topics that are less important, they will be marked with `*` in the title. But we may need a slight understanding of it for the next parts.
+
 ## Rules on Variable Naming and Conventions
 
 Please note that the name of variables have some rules:
@@ -77,7 +79,7 @@ To include standard integer types, use `#include <stdint.h>`
 
 Note that it is common to see these types in our robot codes.
 
-## Casting
+## Casting*
 Assigning a variable or literal in another type to a variable is possible through **casting**. Saving a lower-bit value to a higher-bit container is often safe, but the converse is always unsafe because information is lost by losing bits
 
 Putting things from a small box to a big box is safe as we can put everything inside the big box
@@ -131,7 +133,7 @@ float f = 2.5f;
 int n = static_cast<int>f; //n is now 2
 ```
 
-## `const`
+## `const`*
  `const` is a type of qualifier in C. A variable with such a qualifier in front is not allowed to be reassigned.
 
 ```c

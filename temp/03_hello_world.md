@@ -82,7 +82,12 @@ void Main(){
   <summary>
     Ans
   </summary>
-  "stdio.h" should be &ltstdio.h&gt, Main should be main, printf should be ended with semicolon, mising curly bracket at the end.
+
+  This is the corrected version of the code:
+
+  <img src="images/01_codeblock_1.png"/>
+
+  
 </details>
 
 [Next Page](04_variable_io.html)

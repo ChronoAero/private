@@ -140,7 +140,7 @@ int main(){
   <summary>Ans</summary>
   The program will output
   
-  ```
+  <pre>
   a: 9
   Reason: the line a += 2; is equivalent to a = a + 2 -> a = 7+2 = 9
 
@@ -166,7 +166,7 @@ int main(){
   e: 0
   Reason: Arithmetic operators are done before relational operators.
   4+1 < 3 -> 5 < 3 -> false (0)
-  ```
+  </pre>
 </details>
 
 If you have more time, you can try out different things and find their reasons:
@@ -214,3 +214,4 @@ int main(){
 }
 ```
 
+[Continue to The Next Page](06_rules_and_extra_features.html)

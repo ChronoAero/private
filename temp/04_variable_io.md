@@ -268,20 +268,7 @@ You would like to print on an A0 paper...
 <details>
 One possible solution is the following:
 
-``` c
-#include <stdio.h>
-
-    int main(){
-        char x = '4'; //initialize the variable first, int x is acceptable if you print it with %d
-        printf("You are now reading notes #%c... Let's make a fake printer interface\n", x); //Use double quotes for strings, remove the &, and use %c
-        printf("Input the type of paper you would like to print on? (input the number)\n");
-        int a; char b;
-        scanf("%d", &a); //use the &
-        printf("Input the type of paper you would like to print on? (input the letter)\n");
-        scanf("\n%c", &b); //use the &, because \n is also considered a character, you need to include it in the format; otherwise it will get into b
-        printf("You would like to print on an %c%d paper...");
-    }
-```
+<img src="images/04_codeblock_1.png"/>
 
 <summary>Ans</summary>
 </details>
@@ -312,17 +299,7 @@ You can only include the library `stdio.h`. We guarantee that Course ID contains
 <details>
 One possible solution is the following:
 
-``` c
-#include <stdio.h>
-
-int main(){
-    char a, b, c, d, e, f, g, h, i, j, k ,l; int x, y;
-    scanf("Course ID: %c%c%c%c%c%c%c%c\n", &a, &b, &c, &d, &e, &f, &g, &h);
-    scanf("Course code: %c%c%c%c%d\n", &i, &j, &k, &l, &x);
-    scanf("Rating: %d/5", &y);
-    printf("%c%c%c%c%d (%d/5) [%c%c%c%c-%c%c%c%c]", i, j, k, l, x, y, a, b, c, d, e, f, g, h);
-}
-```
+<img src="images/04_codeblock_2.png">
 
 <summary>Ans</summary>
 </details>

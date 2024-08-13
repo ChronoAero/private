@@ -1,6 +1,6 @@
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: { skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'], inlineMath: [['$','$']] } }); </script> <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-[Back to Main](index.html) | [Previous Page](05_operators.html)
+[Back to Main](index.html) | [Previous Page](06_rules_and_extra_features.html)
 
 # Control Flow
 
@@ -760,6 +760,7 @@ Given n=6
 
 <details>
 <summary>Ans</summary>
+[Will write later...]
 </details>
 
 ## Scopes*

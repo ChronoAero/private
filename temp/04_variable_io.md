@@ -266,7 +266,6 @@ You would like to print on an A0 paper...
 ```
 
 <details>
-One possible solution is the following:
 
 <img src="images/04_codeblock_1.png"/>
 
@@ -297,7 +296,6 @@ COMP4895 (3/5) [0325-6721]
 You can only include the library `stdio.h`. We guarantee that Course ID contains 8 digits (may start with 0). Course code starts with 4 letters followed by 4 digits (will not start with 0). and rating is an integer and always out of 5.
 
 <details>
-One possible solution is the following:
 
 <img src="images/04_codeblock_2.png">
 
